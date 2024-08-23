@@ -1,4 +1,8 @@
 pandas
-numpy
+numpy==1.21.4  # Specify a stable version of numpy
+catboost==1.1  # Specify the catboost version that works with numpy
 seaborn
--e .
+matplotlib
+scikit_learn
+xgboost
+# -e .
