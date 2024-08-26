@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
-# from src.components.model_trainer import ModelTrainer
+from src.components.model_trainer import ModelTrainer
 
 @dataclass
 class DataIngestionConfig:
@@ -27,8 +27,8 @@ class DataIngestion:
 
             #Purpose: Ensures that the directory for saving the data files exists.
             # Details:
-            # Uses os.path.dirname(self.ingestion_config.train_data_path) to get the directory path from the train_data_path.
-            # Creates the directory if it doesn’t already exist (using exist_ok=True to avoid errors if the directory is already present).
+            # Uses os.path.dirname(self.ingestion_config.train_data_path) to get the directory name in train_data_path.
+            # Creates the artifacts directory if it doesn’t already exist (using exist_ok=True to avoid errors if the directory is already present).
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True)
 
 
@@ -56,10 +56,13 @@ class DataIngestion:
         
 
 # python -m src.components.data_ingestion (run this command to check this file)
-# if __name__ =="__main__":
-#     obj=DataIngestion()
-#     train_path, test_path = obj.initiate_data_ingestion()
+if __name__ =="__main__":
+    obj=DataIngestion()
+    train_path, test_path = obj.initiate_data_ingestion()
 
-# #checking both data_ingestion and data_transformation to see if preprocessor.pkl fil is being created or not.
-#     data_transformation = DataTransformation()
-#     data_transformation.initiate_data_transformation(train_path,test_path)
+#checking both data_ingestion and data_transformation to see if preprocessor.pkl fil is being created or not.
+    data_transformation = DataTransformation()
+    train_arr,test_arr,_ = data_transformation.initiate_data_transformation(train_path,test_path)
+
+    model_trainer = ModelTrainer()
+    print(model_trainer.initiate_model_training(train_arr,test_arr))

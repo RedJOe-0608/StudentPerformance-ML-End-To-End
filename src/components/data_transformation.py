@@ -29,7 +29,7 @@ class DataTransformation:
 
             num_pipeline = Pipeline(
                 steps = [
-                    ("imputer", SimpleImputer(strategy="median")),
+                    ("imputer", SimpleImputer(strategy="median")), #for handling any NaN values
                     ("scaler", StandardScaler(with_mean=False))
                 ]
             )
@@ -96,7 +96,7 @@ class DataTransformation:
                 np.array(target_feature_test_df)
             ]
 
-            logging.info("Saving preprocesser object")
+            logging.info("Saving preprocessor object")
 
             save_object(
                 file_path = self.data_transformation_config.preprocessor_ob_file_path,
