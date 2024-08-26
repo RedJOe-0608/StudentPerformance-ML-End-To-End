@@ -1,6 +1,4 @@
-## End To End Machine Learning Project
-
-# Student Performance Analysis
+# Student Performance Analysis End To End Machine Learning Project
 
 ## Table of Contents
 
