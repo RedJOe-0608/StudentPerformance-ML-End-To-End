@@ -56,13 +56,13 @@ class DataIngestion:
         
 
 # python -m src.components.data_ingestion (run this command to check this file)
-if __name__ =="__main__":
-    obj=DataIngestion()
-    train_path, test_path = obj.initiate_data_ingestion()
+# if __name__ =="__main__":
+#     obj=DataIngestion()
+#     train_path, test_path = obj.initiate_data_ingestion()
 
-#checking both data_ingestion and data_transformation to see if preprocessor.pkl fil is being created or not.
-    data_transformation = DataTransformation()
-    train_arr,test_arr,_ = data_transformation.initiate_data_transformation(train_path,test_path)
+# #checking both data_ingestion and data_transformation to see if preprocessor.pkl fil is being created or not.
+#     data_transformation = DataTransformation()
+#     train_arr,test_arr,_ = data_transformation.initiate_data_transformation(train_path,test_path)
 
-    model_trainer = ModelTrainer()
-    print(model_trainer.initiate_model_training(train_arr,test_arr))
+#     model_trainer = ModelTrainer()
+#     print(model_trainer.initiate_model_training(train_arr,test_arr))
